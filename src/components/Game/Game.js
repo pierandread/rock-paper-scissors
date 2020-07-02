@@ -6,7 +6,7 @@ function Game({match}) {
   const {points} = useParams();
   
   return (
-    <div >
+    <div>
       <p>I'm the Game, we will play until {points}</p>
     </div>
   );
