@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Homepage from './components/Homepage/Homepage'
 import Game from './components/Game/Game'
@@ -9,10 +9,12 @@ function App() {
   return (
     <div>
       <Router>
-        <Route exact path="/"
-        component={Homepage}/>
-          <Route path="/playing"
+        <Switch>
+          <Route exact path="/"
+          component={Homepage}/>
+          <Route path="/playing/:points"
           component={Game}/>
+        </Switch>
       </Router>         
     </div>
   );
