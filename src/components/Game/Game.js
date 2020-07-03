@@ -18,10 +18,16 @@ function Game() {
   const [games,setGames] = useState(0)
 
   useEffect(()=>{
-    if(window.location.pathname.includes("simulation") && !endOfGame) {
-      setTimeout(()=>playing(randomNumber(0,3)), 3000);
-    }
-  }, [games])
+    if(window.location.pathname.includes("simulation")) {
+      if(games===0) {
+        const simulation = setTimeout(()=>playing(randomNumber(0,3)), 1000);
+        endOfGame && clearTimeout(simulation)
+      } else {
+        const simulation = setTimeout(()=>playing(randomNumber(0,3)), 3000);
+        endOfGame && clearTimeout(simulation)
+      }
+    };
+  }, [games, endOfGame])
 
   const choices = ["rock", "paper", "scissors"];
 
@@ -36,6 +42,19 @@ function Game() {
     if (result==="win") {setUserScore(userScore+1);};
     if (result==="lost") {setComputerScore(computerScore+1)};
     return null;
+  }
+
+  function resetGame() {
+    setUserScore(0);
+    setComputerScore(0);
+    setEndOfGame();
+    setUserWins();
+    setComputerWins();
+    setDisableButtons();
+    setGifSource("");
+    setPlayerChoice();
+    setComputerChoice();
+    setGames(0);
   }
   
   if(userScore===+points && !disableButtons) {
@@ -66,6 +85,10 @@ function Game() {
       {userWins && <p>You wins</p>}
       {computerwins && <p>Computer wins</p>}
       <p>Final score: You {userScore} vs Computer {computerScore}</p>
+      <Link to={'/'}>
+        <button>Go back to the homepage.</button>
+      </Link>
+      <button onClick={()=>resetGame()}>Start a new game.</button>
     </div>
   );
 
