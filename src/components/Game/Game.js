@@ -5,13 +5,6 @@ import { Link } from "react-router-dom";
 import { gifSources } from './gifSource';
 
 function Game() {
-
-  useEffect(()=>{
-    if(window.location.pathname.includes("simulation")) {
-      setTimeout(()=>playing(randomNumber(0,3)), 3000);
-    }
-  }, [games])
-
   const {points} = useParams();
   const [userScore, setUserScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
@@ -23,6 +16,12 @@ function Game() {
   const [playerChoice, setPlayerChoice] = useState();
   const [computerChoice, setComputerChoice] = useState();
   const [games,setGames] = useState(0)
+
+  useEffect(()=>{
+    if(window.location.pathname.includes("simulation") && !endOfGame) {
+      setTimeout(()=>playing(randomNumber(0,3)), 3000);
+    }
+  }, [games])
 
   const choices = ["rock", "paper", "scissors"];
 
@@ -41,13 +40,13 @@ function Game() {
   
   if(userScore===+points && !disableButtons) {
     setDisableButtons(true);
-    setTimeout(()=> setEndOfGame(true),1000);
+    setTimeout(()=> setEndOfGame(true),2000);
     setUserWins(true);
   }
 
   if(computerScore===+points && !disableButtons) {
     setDisableButtons(true);
-    setTimeout(()=> setEndOfGame(true),1000);
+    setTimeout(()=> setEndOfGame(true),2000);
     setComputerWins(true);
   };
 
