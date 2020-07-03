@@ -61,3 +61,44 @@
   justify-content: center;
 
 }
+
+.ending-gif{
+  height:30vh
+}
+
+.end-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-redirect{
+  background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #566963;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 10px;
+}
+
+.button-redirect:hover, .button-redirect:active  {
+  background:white;
+  color: black;
+}
+
+.button-choice:disabled{
+  background-color: red;
+  color: white;
+}
+
+button[disabled]:hover {
+  background: red;
+}
+
+.button-container-game{
+  display: flex;
+  justify-content: center;
+}

@@ -40,6 +40,8 @@ function Game() {
     setPlayerChoice(choices[input]);
     setComputerChoice(choices[pcInput]);
     setGames(games+1);
+    setDisableButtons(true);
+    setTimeout(()=>setDisableButtons(false), 500)
     if (result==="win") {setUserScore(userScore+1);};
     if (result==="lost") {setComputerScore(computerScore+1)};
     return null;
@@ -83,15 +85,17 @@ function Game() {
   )
 
   if(endOfGame) return (
-    <div>
-      <img src={computerwins? "https://media.giphy.com/media/7MezEc0TOaMlW/giphy.gif" : "https://media.giphy.com/media/cQNRp4QA8z7B6/giphy.gif"} alt="end of game"/>
-      {userWins && <p>You wins</p>}
-      {computerwins && <p>Computer wins</p>}
+    <div className="end-container">
+      <img src={computerwins? "https://media.giphy.com/media/7MezEc0TOaMlW/giphy.gif" : "https://media.giphy.com/media/cQNRp4QA8z7B6/giphy.gif"} alt="end of game" className="ending-gif"/>
+      {userWins && <h2>You wins</h2>}
+      {computerwins && <h2>Computer wins</h2>}
       <p>Final score: You {userScore} vs Computer {computerScore}</p>
-      <Link to={'/'}>
-        <button>Go back to the homepage.</button>
-      </Link>
-      <button onClick={()=>resetGame()}>Start a new game.</button>
+      <div>
+        <button onClick={()=>resetGame()} className="button-redirect" style={{margin: "1em"}}>Start a new game.</button>
+        <Link to={'/'} style={{margin: "1em"}}>
+          <button className="button-redirect">Go back to the homepage.</button>
+        </Link>
+      </div>
     </div>
   );
 
@@ -108,10 +112,10 @@ function Game() {
         <div className="gif-container">
           {gifSource && <img src={gifSource} alt="gif of the game" className="gif-img"></img>}
         </div>
-        <div className="button-container">
-          <button onClick={()=>playing(0)} disabled={disableButtons} className="button-choice"><i class="fa fa-hand-rock-o" aria-hidden="true"></i> Rock</button>
-          <button onClick={()=>playing(1)} disabled={disableButtons} className="button-choice"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Paper</button>
-          <button onClick={()=>playing(2)} disabled={disableButtons} className="button-choice"><i class="fa fa-hand-scissors-o" aria-hidden="true"></i> Scissor</button>
+        <div className="button-container-game">
+          <button onClick={()=>playing(0)} disabled={window.location.pathname.includes("simulation")? true : disableButtons} className="button-choice"><i className="fa fa-hand-rock-o" aria-hidden="true"></i> Rock</button>
+          <button onClick={()=>playing(1)} disabled={window.location.pathname.includes("simulation")? true : disableButtons} className="button-choice"><i className="fa fa-hand-paper-o" aria-hidden="true"></i> Paper</button>
+          <button onClick={()=>playing(2)} disabled={window.location.pathname.includes("simulation")? true : disableButtons} className="button-choice"><i className="fa fa-hand-scissors-o" aria-hidden="true"></i> Scissor</button>
         </div>
         <div>
           {playerChoice? <div><p>You chose {playerChoice} </p> <p>Computer chose {computerChoice}</p> </div> : <p>Please, choose an option</p> }

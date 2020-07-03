@@ -20,7 +20,7 @@ function Homepage() {
               <button className="button-game">You vs the computer</button>
             </Link>
             <Link to={`/simulation/${points}`} className="href-button">
-              <button className="button-game">Computer vs computer</button>
+              <button className="button-game">Simulation</button>
             </Link>
           </div> :
           <p>Value too high, please select a value between 1 and 10!</p>

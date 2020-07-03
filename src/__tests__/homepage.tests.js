@@ -13,7 +13,7 @@ test(("it should redirect to right url if click in you vs the computer"), () =>{
 
 test(("it should redirect to right url if click in computer vs the computer"), () =>{
   const {getByText} = render(<Router><Homepage/></Router>);
-  const buttonComputervsComputer = getByText("Computer vs computer");
+  const buttonComputervsComputer = getByText("Simulation");
   fireEvent.click(buttonComputervsComputer);
   expect(global.window.location.pathname).toEqual('/simulation/5');
 });
