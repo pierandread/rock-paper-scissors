@@ -4,7 +4,7 @@ import {randomNumber, play} from '../../logics/gameLogic';
 import { Link } from "react-router-dom";
 import { gifSources } from './gifSource';
 
-function Game({match}) {
+function Game() {
 
   const {points} = useParams();
   const [userScore, setUserScore] = useState(0);
