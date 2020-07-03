@@ -16,10 +16,10 @@ function Homepage() {
         <p>Let's play a game:</p>
         {points<=10? 
           <div className="buttons-container">
-            <Link to={`/playing/${points}`}>
+            <Link to={`/playing/${points}`} className="href-button">
               <button className="button-game">You vs the computer</button>
             </Link>
-            <Link to={`/simulation/${points}`}>
+            <Link to={`/simulation/${points}`} className="href-button">
               <button className="button-game">Computer vs computer</button>
             </Link>
           </div> :

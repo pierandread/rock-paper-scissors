@@ -73,10 +73,12 @@ function Game() {
   //to avoid user manipulating url manually
   if (points>10 || points<=0) return (
     <div>
-      <p>Number of games too high or low, please go back to the homepage.</p>
-      <Link to={'/'}>
-        <button>We can help.</button>
-      </Link>
+      <p className="nav-bar">Number of games too high or low, please go back to the homepage.</p>
+      <div className="homepage-button">
+        <Link to={'/'}>
+          <button className="button-choice">We can help.</button>
+        </Link>
+      </div>
     </div>
   )
 
@@ -96,20 +98,24 @@ function Game() {
   return (
     <div>
       <div className="nav-bar">
-        <p>I'm the Game, we will play until {points}</p>   
+        <p>I'm the Game, we will play until {points} points!</p>   
       </div>
-      <p>Your Score: {userScore}</p>
-      <p>Computer Score: {computerScore}</p>
-      <div>
-        {gifSource && <img src={gifSource} alt="gif of the game"></img>}
+      <div className="scores-container">
+        <p>Your Score: {userScore}</p>
+        <p>Computer Score: {computerScore}</p>
       </div>
-      <div>
-        {playerChoice? <div><p>You chose {playerChoice} </p> <p>Computer chose {computerChoice}</p> </div> : <p>Please, choose an option</p> }
-      </div>
-      <div>
-        <button onClick={()=>playing(0)} disabled={disableButtons}>Rock</button>
-        <button onClick={()=>playing(1)} disabled={disableButtons}>Paper</button>
-        <button onClick={()=>playing(2)} disabled={disableButtons}>Scissor</button>
+      <div className="game-zone">
+        <div className="gif-container">
+          {gifSource && <img src={gifSource} alt="gif of the game" className="gif-img"></img>}
+        </div>
+        <div className="button-container">
+          <button onClick={()=>playing(0)} disabled={disableButtons} className="button-choice"><i class="fa fa-hand-rock-o" aria-hidden="true"></i> Rock</button>
+          <button onClick={()=>playing(1)} disabled={disableButtons} className="button-choice"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Paper</button>
+          <button onClick={()=>playing(2)} disabled={disableButtons} className="button-choice"><i class="fa fa-hand-scissors-o" aria-hidden="true"></i> Scissor</button>
+        </div>
+        <div>
+          {playerChoice? <div><p>You chose {playerChoice} </p> <p>Computer chose {computerChoice}</p> </div> : <p>Please, choose an option</p> }
+        </div>
       </div>
     </div>
   );
