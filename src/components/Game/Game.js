@@ -52,9 +52,9 @@ function Game() {
   };
 
   //to avoid user manipulating url manually
-  if (points>10 || ) return (
+  if (points>10 || points<=0) return (
     <div>
-      <p>Number of games too high, please go back to the homepage.</p>
+      <p>Number of games too high or low, please go back to the homepage.</p>
       <Link to={'/'}>
         <button>We can help.</button>
       </Link>
