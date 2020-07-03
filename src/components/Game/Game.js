@@ -3,6 +3,7 @@ import {useParams} from 'react-router';
 import {randomNumber, play} from '../../logics/gameLogic';
 import { Link } from "react-router-dom";
 import { gifSources } from './gifSource';
+import './Game.css'
 
 function Game() {
   const {points} = useParams();
@@ -94,7 +95,9 @@ function Game() {
 
   return (
     <div>
-      <p>I'm the Game, we will play until {points}</p>
+      <div className="nav-bar">
+        <p>I'm the Game, we will play until {points}</p>   
+      </div>
       <p>Your Score: {userScore}</p>
       <p>Computer Score: {computerScore}</p>
       <div>
