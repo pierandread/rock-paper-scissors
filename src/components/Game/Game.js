@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {useParams} from 'react-router';
 import {randomNumber, play} from '../../logics/gameLogic';
 import { Link } from "react-router-dom";
-
+import { gifSources } from './gifSource';
 
 function Game({match}) {
 
@@ -13,11 +13,19 @@ function Game({match}) {
   const [userWins, setUserWins] = useState();
   const [computerwins, setComputerWins] = useState();
   const [disableButtons, setDisableButtons] = useState();
+  const [gifSource, setGifSource] = useState("");
+  const [playerChoice, setPlayerChoice] = useState();
+  const [computerChoice, setComputerChoice] = useState();
+
+  const choices = ["rock", "paper", "scissors"];
 
   function playing (input) {
     const pcInput = randomNumber(0, 3);
     const result = play(pcInput, input);
-    console.log(result)
+    console.log(result);
+    setGifSource(gifSources[input][pcInput]);
+    setPlayerChoice(choices[input]);
+    setComputerChoice(choices[pcInput]);
     if (result==="win") {setUserScore(userScore+1)};
     if (result==="lost") {setComputerScore(computerScore+1)};
     return null;
@@ -35,6 +43,7 @@ function Game({match}) {
     setComputerWins(true);
   };
 
+  //to avoid user manipulating url manually
   if (points>10) return (
     <div>
       <p>Number of games too high, please go back to the homepage.</p>
@@ -54,13 +63,21 @@ function Game({match}) {
   );
 
   return (
-    <div style={{display:"disable"}}>
+    <div>
       <p>I'm the Game, we will play until {points}</p>
       <p>Your Score: {userScore}</p>
       <p>Computer Score: {computerScore}</p>
-      <button onClick={()=>playing(0)} disabled={disableButtons}>Rock</button>
-      <button onClick={()=>playing(1)} disabled={disableButtons}>Paper</button>
-      <button onClick={()=>playing(2)} disabled={disableButtons}>Scissor</button>
+      <div>
+        {gifSource && <img src={gifSource} alt="gif of the game"></img>}
+      </div>
+      <div>
+        {playerChoice? <div><p>You chose {playerChoice} </p> <p>Computer chose {computerChoice}</p> </div> : <p>Please, choose an option</p> }
+      </div>
+      <div>
+        <button onClick={()=>playing(0)} disabled={disableButtons}>Rock</button>
+        <button onClick={()=>playing(1)} disabled={disableButtons}>Paper</button>
+        <button onClick={()=>playing(2)} disabled={disableButtons}>Scissor</button>
+      </div>
     </div>
   );
 }
