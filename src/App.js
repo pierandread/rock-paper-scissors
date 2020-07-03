@@ -14,6 +14,8 @@ function App() {
           component={Homepage}/>
           <Route path="/playing/:points"
           component={Game}/>
+          <Route path="/simulation/:points"
+          component={Game}/>
         </Switch>
       </Router>         
     </div>

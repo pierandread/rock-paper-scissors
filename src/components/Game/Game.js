@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useParams} from 'react-router';
 import {randomNumber, play} from '../../logics/gameLogic';
 import { Link } from "react-router-dom";
 import { gifSources } from './gifSource';
 
 function Game() {
+
+  useEffect(()=>{
+    if(window.location.pathname.includes("simulation")) {
+      setTimeout(()=>playing(randomNumber(0,3)), 3000);
+    }
+  }, [games])
 
   const {points} = useParams();
   const [userScore, setUserScore] = useState(0);
@@ -16,6 +22,7 @@ function Game() {
   const [gifSource, setGifSource] = useState("");
   const [playerChoice, setPlayerChoice] = useState();
   const [computerChoice, setComputerChoice] = useState();
+  const [games,setGames] = useState(0)
 
   const choices = ["rock", "paper", "scissors"];
 
@@ -26,25 +33,26 @@ function Game() {
     setGifSource(gifSources[input][pcInput]);
     setPlayerChoice(choices[input]);
     setComputerChoice(choices[pcInput]);
-    if (result==="win") {setUserScore(userScore+1)};
+    setGames(games+1);
+    if (result==="win") {setUserScore(userScore+1);};
     if (result==="lost") {setComputerScore(computerScore+1)};
     return null;
   }
   
   if(userScore===+points && !disableButtons) {
     setDisableButtons(true);
-    setTimeout(()=> setEndOfGame(true),3000);
+    setTimeout(()=> setEndOfGame(true),1000);
     setUserWins(true);
   }
 
   if(computerScore===+points && !disableButtons) {
     setDisableButtons(true);
-    setTimeout(()=> setEndOfGame(true),3000);
+    setTimeout(()=> setEndOfGame(true),1000);
     setComputerWins(true);
   };
 
   //to avoid user manipulating url manually
-  if (points>10) return (
+  if (points>10 || ) return (
     <div>
       <p>Number of games too high, please go back to the homepage.</p>
       <Link to={'/'}>
