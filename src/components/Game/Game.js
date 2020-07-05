@@ -20,14 +20,13 @@ function Game() {
 
   useEffect(()=>{
     if(window.location.pathname.includes("simulation")) {
-      if(games===0) {
-        const simulation = setTimeout(()=>playing(randomNumber(0,3)), 1000);
-      } else {
-        const simulation = setTimeout(()=>playing(randomNumber(0,3)), 3000);
-        endOfGame && clearTimeout(simulation)
+       if (games===0) {
+         window.setTimeout(()=>{playing(randomNumber(0,3))}, 1000);
+      } else if (userScore!==+points && computerScore!==+points) {        
+         setTimeout(()=>{playing(randomNumber(0,3))}, 3000);
       }
     };
-  }, [games, endOfGame])
+  }, [games])
 
   const choices = ["rock", "paper", "scissors"];
 
@@ -38,11 +37,11 @@ function Game() {
     setGifSource(gifSources[input][pcInput]);
     setPlayerChoice(choices[input]);
     setComputerChoice(choices[pcInput]);
-    setGames(games+1);
     setDisableButtons(true);
     setTimeout(()=>setDisableButtons(false), 500)
     if (result==="win") {setUserScore(userScore+1);};
     if (result==="lost") {setComputerScore(computerScore+1)};
+    setGames(games+1);
     return null;
   }
 
@@ -84,7 +83,9 @@ function Game() {
   )
 
   if(endOfGame) return (
-    <div className="end-container">
+    <div>  
+    <div className="nav-bar"></div>
+    <div className="end-container" style={{}}>
       <img src={computerWon? "https://media.giphy.com/media/7MezEc0TOaMlW/giphy.gif" : "https://media.giphy.com/media/cQNRp4QA8z7B6/giphy.gif"} alt="end of game" className="ending-gif"/>
       {userWon && <h2>You won</h2>}
       {computerWon && <h2>Computer won</h2>}
@@ -95,6 +96,8 @@ function Game() {
           <button className="button-redirect">Go back to the homepage.</button>
         </Link>
       </div>
+    </div>
+
     </div>
   );
 
