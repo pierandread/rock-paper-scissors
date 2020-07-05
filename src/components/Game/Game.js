@@ -10,8 +10,8 @@ function Game() {
   const [userScore, setUserScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [endOfGame, setEndOfGame] = useState();
-  const [userWins, setUserWins] = useState();
-  const [computerwins, setComputerWins] = useState();
+  const [userWon, setUserWon] = useState();
+  const [computerWon, setComputerWon] = useState();
   const [disableButtons, setDisableButtons] = useState();
   const [gifSource, setGifSource] = useState("");
   const [playerChoice, setPlayerChoice] = useState();
@@ -22,7 +22,6 @@ function Game() {
     if(window.location.pathname.includes("simulation")) {
       if(games===0) {
         const simulation = setTimeout(()=>playing(randomNumber(0,3)), 1000);
-        endOfGame && clearTimeout(simulation)
       } else {
         const simulation = setTimeout(()=>playing(randomNumber(0,3)), 3000);
         endOfGame && clearTimeout(simulation)
@@ -51,8 +50,8 @@ function Game() {
     setUserScore(0);
     setComputerScore(0);
     setEndOfGame();
-    setUserWins();
-    setComputerWins();
+    setUserWon();
+    setComputerWon();
     setDisableButtons();
     setGifSource("");
     setPlayerChoice();
@@ -63,13 +62,13 @@ function Game() {
   if(userScore===+points && !disableButtons) {
     setDisableButtons(true);
     setTimeout(()=> setEndOfGame(true),2000);
-    setUserWins(true);
+    setUserWon(true);
   }
 
   if(computerScore===+points && !disableButtons) {
     setDisableButtons(true);
     setTimeout(()=> setEndOfGame(true),2000);
-    setComputerWins(true);
+    setComputerWon(true);
   };
 
   //to avoid user manipulating url manually
@@ -86,9 +85,9 @@ function Game() {
 
   if(endOfGame) return (
     <div className="end-container">
-      <img src={computerwins? "https://media.giphy.com/media/7MezEc0TOaMlW/giphy.gif" : "https://media.giphy.com/media/cQNRp4QA8z7B6/giphy.gif"} alt="end of game" className="ending-gif"/>
-      {userWins && <h2>You wins</h2>}
-      {computerwins && <h2>Computer wins</h2>}
+      <img src={computerWon? "https://media.giphy.com/media/7MezEc0TOaMlW/giphy.gif" : "https://media.giphy.com/media/cQNRp4QA8z7B6/giphy.gif"} alt="end of game" className="ending-gif"/>
+      {userWon && <h2>You won</h2>}
+      {computerWon && <h2>Computer won</h2>}
       <p>Final score: You {userScore} vs Computer {computerScore}</p>
       <div>
         <button onClick={()=>resetGame()} className="button-redirect" style={{margin: "1em"}}>Start a new game.</button>

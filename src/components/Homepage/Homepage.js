@@ -10,10 +10,10 @@ function Homepage() {
   return (
     <div>
       <div className="title">
-        <p>Welcome to Rock, Paper and Scissors</p>
+        <h3>Welcome to Rock, Paper and Scissors</h3>
       </div>
       <div className="content-homepage">
-        <p>Let's play a game:</p>
+        <h3 style={{ marginBottom: "5vh" }}>Let's play a game:</h3>
         {points<=10? 
           <div className="buttons-container">
             <Link to={`/playing/${points}`} className="href-button">
@@ -23,7 +23,7 @@ function Homepage() {
               <button className="button-game">Simulation</button>
             </Link>
           </div> :
-          <p>Value too high, please select a value between 1 and 10!</p>
+          <p style={{ marginBottom: "6.5vh" }}>Value too high, please select a value between 1 and 10!</p>
         }
         <div>
           <label htmlFor="points">How many points to win (between 1 and 10):</label>
