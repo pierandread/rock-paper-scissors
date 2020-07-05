@@ -102,3 +102,7 @@ button[disabled]:hover {
   display: flex;
   justify-content: center;
 }
+
+.chosing-options{
+  margin-left:3vw;
+}

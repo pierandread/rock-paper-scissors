@@ -19,5 +19,13 @@ test(("it should show the gif"), () =>{
   expect(gif).toBeInTheDocument();
 });
 
+test(("expect button to be disabled if clicked"), () =>{
+  const {getByText} = render(<Router><Game/></Router>);
+  const rockButton = getByText("Rock");
+  expect(rockButton.disabled).toEqual(false);
+  fireEvent.click(rockButton);
+  expect(rockButton.disabled).toEqual(true);
+});
+
 
 

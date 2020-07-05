@@ -117,7 +117,7 @@ function Game() {
           <button onClick={()=>playing(1)} disabled={window.location.pathname.includes("simulation")? true : disableButtons} className="button-choice"><i className="fa fa-hand-paper-o" aria-hidden="true"></i> Paper</button>
           <button onClick={()=>playing(2)} disabled={window.location.pathname.includes("simulation")? true : disableButtons} className="button-choice"><i className="fa fa-hand-scissors-o" aria-hidden="true"></i> Scissor</button>
         </div>
-        <div>
+        <div className="chosing-options">
           {playerChoice? <div><p>You chose {playerChoice} </p> <p>Computer chose {computerChoice}</p> </div> : <p>Please, choose an option</p> }
         </div>
       </div>
