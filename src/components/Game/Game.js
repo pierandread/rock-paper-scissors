@@ -84,20 +84,19 @@ function Game() {
 
   if(endOfGame) return (
     <div>  
-    <div className="nav-bar"></div>
-    <div className="end-container" style={{}}>
-      <img src={computerWon? "https://media.giphy.com/media/7MezEc0TOaMlW/giphy.gif" : "https://media.giphy.com/media/cQNRp4QA8z7B6/giphy.gif"} alt="end of game" className="ending-gif"/>
-      {userWon && <h2>You won</h2>}
-      {computerWon && <h2>Computer won</h2>}
-      <p>Final score: You {userScore} vs Computer {computerScore}</p>
-      <div>
-        <button onClick={()=>resetGame()} className="button-redirect" style={{margin: "1em"}}>Start a new game.</button>
-        <Link to={'/'} style={{margin: "1em"}}>
-          <button className="button-redirect">Go back to the homepage.</button>
-        </Link>
+      <div className="nav-bar"></div>
+      <div className="end-container" style={{}}>
+        <img src={computerWon? "https://media.giphy.com/media/7MezEc0TOaMlW/giphy.gif" : "https://media.giphy.com/media/cQNRp4QA8z7B6/giphy.gif"} alt="end of game" className="ending-gif"/>
+        {userWon && <h2>You won</h2>}
+        {computerWon && <h2>Computer won</h2>}
+        <p>Final score: You {userScore} vs Computer {computerScore}</p>
+        <div>
+          <button onClick={()=>resetGame()} className="button-redirect" style={{margin: "1em"}}>Start a new game.</button>
+          <Link to={'/'} style={{margin: "1em"}}>
+            <button className="button-redirect">Go back to the homepage.</button>
+          </Link>
+        </div>
       </div>
-    </div>
-
     </div>
   );
 

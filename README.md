@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Rock, Paper and Scissors
 
-## Available Scripts
+> A web app to play rock, paper and scissors vs the computer or to simulate a game. 
 
-In the project directory, you can run:
+## Implemented Features
 
-### `npm start`
+* Possibility to choose between a game vs the computer or to simulate it.
+* From 1 to 10 rounds limit. 
+* 9 different gifs to cover all the different combinations plus two differents one that will play if you win or lose. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Screenshot
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<div align="center">
 
-### `npm test`
+**Homepage**
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![](./screenshot/homepage.png)
 
-### `npm run build`
+**Game**
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](./screenshot/game.png)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+**Victory!**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![](./screenshot/win.png)
 
-### `npm run eject`
+</div>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Usage
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Clone this repo in your local environment using `git clone`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Go to the folder.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* `npm install` to begin dependencies installation.
 
-## Learn More
+* `npm start` to run it.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* `npm test` to run the react tests.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Built with
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* [React](https://reactjs.org/) - Front end library for building user interfaces.
+* [React-testing-library](https://testing-library.com/) - React testing utilities.
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Improvements
 
-### Making a Progressive Web App
+* The tests can be improved with test ids to not cause problems if the text will change in a future version.
+* Not mobile-ready yet, possible to implement media queries or a css fw to cover it.
+* Game component can be split into extra sub-components to be more in line with the React philosophy.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Extra thoughts
 
-### Advanced Configuration
+* The tracking of the points/rounds and the simulation is done via the url and the different parameters. In a bigger project or in a future version, it is possible to follow a different path (as using Redux or React-context).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
+## Authors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Pier Andrea Delise: [GitHub](https://github.com/pierandread) - [LinkedIn](https://www.linkedin.com/in/pier-andrea-delise/)
